@@ -9,6 +9,9 @@
 #include <iostream>
 #include "glsl.h"
 #include <time.h>
+#include "Arbol.h"
+#include "Tetera.h"
+#include "Triangulo.h"
 
 //-----------------------------------------------------------------------------
 
@@ -22,6 +25,9 @@ protected:
    clock_t time0,time1;
    float timer010;  // timer counting 0->1->0
    bool bUp;        // flag if counting up or down.
+   Arbol* Arbolito;
+   Tetera* Teterita;
+   Triangulo* Triangulito;
 
 public:
 	myWindow(){}
@@ -37,48 +43,16 @@ public:
 
         //glRotatef(timer010*360, 0.5, 1.0f, 0.1f);
         //glTranslatef(0.0, 0.0, 0.0);
-
-        ///////////
-        glTranslatef(0.0, 0.0, -10.0);
+        glTranslatef(0.0, 0.0, -7);
         glPushMatrix();
 
-            glPushMatrix();
-                glTranslatef(-3.0, 0.0, 0.0);
-                glutSolidTeapot(0.5);
-            glPopMatrix();
-
-            glPushMatrix();
-                glTranslatef(0.0, -3.0, 0.0);
-                glutSolidTeapot(0.5);
-            glPopMatrix();
-
-            glPushMatrix();
-                glTranslatef(3.0, 0.0, 0.0);
-                glutSolidTeapot(0.5);
-            glPopMatrix();
-
-            glPushMatrix();
-                glTranslatef(3.0, 3.0, 0.0);
-                glRotatef(45, 0, 0, 1);
-                glutSolidCube(0.5);
-            glPopMatrix();
-
-            glPushMatrix();
-                glTranslatef(-3.0, 3.0, 0.0);
-                glRotatef(30, 0, 0, 1);
-                glutSolidCube(0.5);
-            glPopMatrix();
-
-            glPushMatrix();
-                glTranslatef(0.0, 3.0, 0.0); 
-                glBegin(GL_TRIANGLES);
-                glVertex3f(0.5, 0, 0);
-                glVertex3f(0, 1, 0);
-                glVertex3f(-0.5, 0, 0);
-                glEnd();
-            glPopMatrix();
+        Arbolito->DibujarArbol(-3, 0, 0);
+        Teterita->DibujarTetera(3, 0, 0);
+        Triangulito->DibujarTriangulo(0, 3, 0);
 
         glPopMatrix();
+
+
       if (shader) shader->end();
       glutSwapBuffers();
       glPopMatrix();
@@ -109,6 +83,10 @@ public:
       time0 = clock();
       timer010 = 0.0f;
       bUp = true;
+
+      Arbolito = new Arbol();
+      Teterita = new Tetera();
+      Triangulito = new Triangulo();
 
       DemoLight();
 
