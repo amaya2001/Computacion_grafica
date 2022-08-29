@@ -9,9 +9,12 @@
 #include <iostream>
 #include "glsl.h"
 #include <time.h>
-#include "Arbol.h"
-#include "Tetera.h"
-#include "Triangulo.h"
+#include "Objeto_Cola.h"
+//#include "Arbol.h"
+//#include "Tetera.h"
+//#include "Triangulo.h"
+#define Rotacion 25
+
 
 //-----------------------------------------------------------------------------
 
@@ -25,9 +28,9 @@ protected:
    clock_t time0,time1;
    float timer010;  // timer counting 0->1->0
    bool bUp;        // flag if counting up or down.
-   Arbol* Arbolito;
-   Tetera* Teterita;
-   Triangulo* Triangulito;
+   Objeto_Cola* _Cola;
+
+
 
 public:
 	myWindow(){}
@@ -40,20 +43,17 @@ public:
         glPushMatrix();
 
         if (shader) shader->begin();
+        //Alejar la escena
+        glTranslatef(0, 0, -5);
 
-        //glRotatef(timer010*360, 0.5, 1.0f, 0.1f);
-        //glTranslatef(0.0, 0.0, 0.0);
-        glTranslatef(0.0, 0.0, -7);
         glPushMatrix();
-
-        Arbolito->DibujarArbol(-3, 0, 0);
-        Teterita->DibujarTetera(3, 0, 0);
-        Triangulito->DibujarTriangulo(0, 3, 0);
-
+            _Cola->DibujarCola(0, 0, 0);
         glPopMatrix();
 
 
       if (shader) shader->end();
+
+
       glutSwapBuffers();
       glPopMatrix();
 
@@ -83,11 +83,7 @@ public:
       time0 = clock();
       timer010 = 0.0f;
       bUp = true;
-
-      Arbolito = new Arbol();
-      Teterita = new Tetera();
-      Triangulito = new Triangulo();
-
+      _Cola = new Objeto_Cola();
       DemoLight();
 
 	}

@@ -1,5 +1,9 @@
 ﻿cl : línea de comandos warning D9035: La opción 'Gm' está desusada y se quitará en próximas versiones
   main.cpp
-  Tetera.cpp
+D:\SALVADO AGOSTO 2021\Desktop\Grafica\Repositorio_graf\main.cpp(16,1): warning C4005: 'Rotacion': redefinición de macro
+D:\SALVADO AGOSTO 2021\Desktop\Grafica\Repositorio_graf\Objeto_Cola.h(9): message : vea la definición anterior de 'Rotacion'
+  Objeto_Cola.cpp
+D:\SALVADO AGOSTO 2021\Desktop\Grafica\Repositorio_graf\Objeto_Cola.cpp(12,39): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+D:\SALVADO AGOSTO 2021\Desktop\Grafica\Repositorio_graf\Objeto_Cola.cpp(21,39): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
   Generando código...
   TemplateProject.vcxproj -> D:\SALVADO AGOSTO 2021\Desktop\Grafica\Repositorio_graf\Debug\TemplateProject.exe
